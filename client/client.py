@@ -23,7 +23,7 @@ class Client:
                 self.current_state = self.connection_state()
 
 
-        # Estado(1): Connecting whit the server.
+        # State(1): Connecting whit the server.
          # Client sends -> ("/connect") (/connected) <- / Goes to the beginning of the game.
     def connection_state(self):
             # Initiating the connection to the server.
