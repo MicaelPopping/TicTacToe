@@ -18,9 +18,12 @@ class Client:
     def start(self):
             # Client state machine.
         while True:
-                # Connection State
+                # Connection State.
             if self.current_state == 1:
                 self.current_state = self.connection_state()
+                # Connected State.
+            if self.current_state == 2:
+                self.current_state = self.connected_state()
 
 
         # State(1): Connecting whit the server.
@@ -28,12 +31,18 @@ class Client:
     def connection_state(self):
             # Initiating the connection to the server.
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.client.connect((TARGET_HOST, TARGET_PORT))
+        self.client.connect((self.TARGET_HOST, self.TARGET_PORT))
             # Awaiting server response.
         message = self.client.recv(1024)
         message = message.decode()
             # Checking server response.
         if message == '/connected':
             return 2
-        else
+        else:
             return -1
+
+        # State(2): Application start.
+         # Client sends -> (/play) (/queue) <- / Goes to the queue.
+         # Client sends -> (/quit) (/unplugged) <- / Goes to the queue.
+    def connected_state(self):
+        return
