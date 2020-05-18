@@ -43,6 +43,6 @@ class Client:
 
         # State(2): Application start.
          # Client sends -> (/play) (/queue) <- / Goes to the queue.
-         # Client sends -> (/quit) (/unplugged) <- / Goes to the queue.
+         # Client sends -> (/quit) (/unplugged) <- / Goes to the end.
     def connected_state(self):
         return
