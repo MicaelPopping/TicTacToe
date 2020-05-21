@@ -1,5 +1,6 @@
 import socket
 from news_clients import news_clients
+from clients_list import ClientsList
 
 class Server:
 
@@ -13,8 +14,10 @@ class Server:
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server.bind((self.HOST, self.PORT))
         server.listen()
+            # Start clients list.
+        clients = ClientsList()
             # Start news_clients thread.
-        t_news_clients = news_clients(server)
+        t_news_clients = news_clients(server, clients)
         t_news_clients.start()
 
         print('Server start.')
